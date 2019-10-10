@@ -1,20 +1,19 @@
 #!/usr/bin/env python
 
-import argparse
 import requests
 import json
 from lxml import html
 import re
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-slack", help='Provide Slack token')
-    args = parser.parse_args()
 
+    out = ""
     page = requests.get('https://api.pepy.tech/api/projects/stumpy')
     pypi_downloads = json.loads(page.content)['total_downloads']
     pypi_downloads = int(pypi_downloads)
     #print(pypi_downloads)
+    
+    out += f"PyPI Downloads: {pypi_downloads}\n"
 
     page = requests.get("https://anaconda.org/conda-forge/stumpy")
     tree = html.fromstring(page.content)
@@ -22,12 +21,19 @@ if __name__ == '__main__':
     conda_downloads = int(conda_downloads)
     #print(conda_downloads)
 
+    out += f"Conda Downloads: {conda_downloads}\n"
+
     total_downloads = pypi_downloads + conda_downloads
-    print(total_downloads)
+    #print(total_downloads)
+    
+    out += f"Total Downloads: {total_downloads}\n"
 
     page = requests.get("https://github.com/TDAmeritrade/stumpy")
-    #print(page.headers['Content-Type'])
     m = re.search('(\d+) users starred this repository', page.content.decode('utf-8'))
-    if m:
-        github_stars = m.groups()[0]
-        print(github_stars)
+    
+    github_stars = m.groups()[0]
+    #print(github_stars)
+
+    out += f"Github Stars: {github_stars}"
+
+    print(out)
