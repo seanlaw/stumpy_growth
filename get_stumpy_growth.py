@@ -4,10 +4,13 @@ import requests
 import json
 from lxml import html
 import re
+from datetime import date
 
 if __name__ == '__main__':
 
-    out = ""
+    today = date.today()
+    out = f"{today}\n"
+
     page = requests.get('https://api.pepy.tech/api/projects/stumpy')
     pypi_downloads = json.loads(page.content)['total_downloads']
     pypi_downloads = int(pypi_downloads)
