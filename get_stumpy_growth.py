@@ -31,10 +31,11 @@ if __name__ == '__main__':
     
     out += f"Total Downloads: {total_downloads}\n"
 
-    page = requests.get("https://github.com/TDAmeritrade/stumpy")
-    m = re.search('(\d+) users starred this repository', page.content.decode('utf-8'))
-    
+    page = requests.get("https://github.com/TDAmeritrade/stumpy/stargazers")
+    m = re.search('All <span class="Counter">([0-9,]+)</span>', page.content.decode('utf-8')) 
+
     github_stars = m.groups()[0]
+    github_stars = int(github_stars.replace(',', ''))
     #print(github_stars)
 
     out += f"Github Stars: {github_stars}\n"
