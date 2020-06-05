@@ -31,13 +31,9 @@ if __name__ == '__main__':
     
     out += f"Total Downloads: {total_downloads}\n"
 
-    page = requests.get("https://github.com/TDAmeritrade/stumpy/stargazers")
-    m = re.search('All <span class="Counter">([0-9,]+)</span>', page.content.decode('utf-8')) 
-
-    github_stars = m.groups()[0]
-    github_stars = int(github_stars.replace(',', ''))
-    #print(github_stars)
-
+    page = requests.get("https://api.github.com/repos/TDAmeritrade/stumpy")
+    github_stars = json.loads(page.content)['stargazers_count']
+    
     out += f"Github Stars: {github_stars}\n"
 
     page = requests.get("https://badge.dimensions.ai/details/id/pub.1118108310/metrics.json")
