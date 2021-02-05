@@ -20,7 +20,8 @@ if __name__ == '__main__':
 
     page = requests.get("https://anaconda.org/conda-forge/stumpy", verify=False)
     tree = html.fromstring(page.content)
-    conda_downloads = tree.xpath('/html/body/div[2]/div[2]/div/div[4]/div/div[1]/ul/li[2]/span/text()')[0]
+    #conda_downloads = tree.xpath('/html/body/div[2]/div[2]/div/div[4]/div/div[1]/ul/li[2]/span/text()')[0]
+    conda_downloads = tree.xpath('/html/body/div[2]/div[2]/div/div[4]/div/div[1]/ul/li[5]/span/text()')[0]
     conda_downloads = int(conda_downloads)
     #print(conda_downloads)
 
