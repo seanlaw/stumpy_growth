@@ -37,8 +37,8 @@ if __name__ == '__main__':
     
     out += f"Github Stars: {github_stars}\n"
 
-    page = requests.get("https://badge.dimensions.ai/details/id/pub.1118108310/metrics.json", verify=False)
-    citations = json.loads(page.content)['times_cited']
-    out += f"Total Citations: {citations}\n"
+    # page = requests.get("https://badge.dimensions.ai/details/id/pub.1118108310/metrics.json", verify=False)
+    # citations = json.loads(page.content)['times_cited']
+    # out += f"Total Citations: {citations}\n"
 
     print(out)
