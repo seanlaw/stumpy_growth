@@ -1,7 +1,5 @@
 name: Run Scheduled Action
 on:
-  schedule:
-    - cron: "0 12 * * *"
   workflow_dispatch:
   repository_dispatch:
     types: [run_stumpy_growth]
