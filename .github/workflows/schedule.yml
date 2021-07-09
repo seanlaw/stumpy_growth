@@ -1,0 +1,18 @@
+name: Run Scheduled Action
+on:
+  schedule:
+    - cron: "55 21 * * *"
+jobs:
+  get_stumpy_stats:
+    runs-on: ubuntu-latest
+    steps:
+      uses: actions/checkout@v2
+      - name: Set Up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+      - name: Install Requirements
+        run: pip install -r requirements.txt
+      - name: Retrieve STUMPY Stats
+        run: bash github.sh
+        shell: bash
