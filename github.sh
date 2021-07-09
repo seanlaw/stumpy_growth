@@ -1,6 +1,6 @@
 #!/bin/sh
 
-HOSTNAME=`Github Actions`
+HOSTNAME="Github Actions"
 STUMPY_STATS=`python3 get_stumpy_growth.py 2> /dev/null`
 echo $STUMPY_STATS
 
