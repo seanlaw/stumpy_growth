@@ -1,12 +1,12 @@
 name: Run Scheduled Action
 on:
   schedule:
-    - cron: "55 21 * * *"
+    - cron: "57 21 * * *"
 jobs:
   get_stumpy_stats:
     runs-on: ubuntu-latest
     steps:
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v2
       - name: Set Up Python
         uses: actions/setup-python@v2
         with:
