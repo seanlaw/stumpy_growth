@@ -1,7 +1,7 @@
 name: Run Scheduled Action
 on:
   schedule:
-    - cron: "9 22 * * *"
+    - cron: "5 2 * * *"
 jobs:
   get_stumpy_stats:
     runs-on: ubuntu-latest
