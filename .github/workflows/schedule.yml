@@ -1,7 +1,7 @@
 name: Run Scheduled Action
 on:
   schedule:
-    - cron: "5 2 * * *"
+    - cron: "20 2 * * *"
   workflow_dispatch:
 jobs:
   get_stumpy_stats:
