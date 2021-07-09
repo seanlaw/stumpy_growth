@@ -3,6 +3,8 @@ on:
   schedule:
     - cron: "0 12 * * *"
   workflow_dispatch:
+  repository_dispatch:
+    types: [run_stumpy_growth]
 jobs:
   get_stumpy_stats:
     runs-on: ubuntu-latest
