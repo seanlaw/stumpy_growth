@@ -7,7 +7,7 @@ import re
 from datetime import date
 
 def get_pypi_downloads():
-    page = requests.get('https://api.pepy.tech/api/projects/stumpy', verify=False)
+    page = requests.get('https://api.pepy.tech/api/v2/projects/stumpy', verify=False)
     downloads = json.loads(page.content)['total_downloads']
     downloads = int(downloads)
     #print(downloads)
