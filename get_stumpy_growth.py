@@ -5,9 +5,11 @@ import json
 from lxml import html
 import re
 from datetime import date
+import os
 
 def get_pypi_downloads():
-    page = requests.get('https://api.pepy.tech/api/v2/projects/stumpy', verify=False)
+    headers = {'X-Api-Key': os.environ['PEPY_TECH']}
+    page = requests.get('https://api.pepy.tech/api/v2/projects/stumpy', verify=False, headers=headers)
     downloads = json.loads(page.content)['total_downloads']
     downloads = int(downloads)
     #print(downloads)

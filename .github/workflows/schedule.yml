@@ -19,3 +19,4 @@ jobs:
         shell: bash
         env:
           WEBHOOK: ${{ secrets.SLACK_WEBHOOK}}
+          PEPY_TECH: ${{ secrets.PEPY_TECH_API_KEY}}
