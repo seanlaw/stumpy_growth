@@ -3,8 +3,8 @@ on:
   push:
     branches: main
   workflow_dispatch:
-  repository_dispatch:
-    types: [run_stumpy_growth]
+  schedule:
+    - cron: '0 14 * * *'  # 2pm UTC == 9am EST
 jobs:
   get_stumpy_stats:
     runs-on: ubuntu-latest
