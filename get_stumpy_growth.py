@@ -17,15 +17,14 @@ def get_pypi_downloads():
 
 
 def get_conda_downloads():
-    page = requests.get("https://anaconda.org/conda-forge/stumpy", verify=False)
-    #tree = html.fromstring(page.content)
-    #downloads = tree.xpath('/html/body/div[2]/div[2]/div/div[4]/div/div[1]/ul/li[2]/span/text()')[0]
-    #downloads = tree.xpath('/html/body/div[2]/div[2]/div/div[4]/div/div[1]/ul/li[5]/span/text()')[0]
-    target_title = "Download Count"
-    pattern = rf'<li title="{re.escape(target_title)}">(.*?)</li>'
-    match = re.search(pattern, page.text, re.DOTALL)
-    downloads = re.findall(r'\d+', match.group(1).strip())[0]
-    downloads = int(downloads)
+    #page = requests.get("https://anaconda.org/conda-forge/stumpy", verify=False)
+    #pattern=r'"download_count":(.*?),'
+    #match = re.search(pattern, page.text, re.DOTALL)
+    #downloads = re.findall(r'\d+', match.group(1).strip())[0]
+    #downloads = int(downloads)
+    page = requests.get("https://api.anaconda.org/repocore/channels/conda-forge/artifacts/conda/stumpy", verify=False)
+    data = page.json()
+    downloads = data.get("download_count")
     #print(downloads)
     return downloads
 
