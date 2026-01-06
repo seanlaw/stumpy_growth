@@ -1,0 +1,5 @@
+.gitattributes
+pixi.*
+# pixi environments
+.pixi/*
+!.pixi/config.toml
